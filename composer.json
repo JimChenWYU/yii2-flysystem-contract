@@ -1,0 +1,13 @@
+{
+    "name": "jimchen/yii2-flysystem-contract",
+    "description": "The flysystem extension contract for the Yii framework",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "JimChen",
+            "email": "18219111672@163.com"
+        }
+    ],
+    "require": {}
+}
