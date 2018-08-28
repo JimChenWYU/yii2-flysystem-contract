@@ -21,7 +21,7 @@ class xxxFilesystem extends Filesystem
      */
     protected function prepareAdapter()
     {
-        // TODO: Implement __callStatic() method.
+        // TODO: Implement prepareAdapter() method.
     }
 }
 
