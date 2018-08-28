@@ -1,6 +1,6 @@
 # yii2-flysystem-contract
 
-The flysystem extension contract for the Yii framework, the contract class is from [creocoder/yii2-flysystem](https://github.com/creocoder/yii2-flysystem/tree/master/src), the repo's purpose is to separate the abstraction and implementation.
+The flysystem extension contract for the Yii framework, the abstract class is from [creocoder/yii2-flysystem](https://github.com/creocoder/yii2-flysystem), the repo's purpose is to separate the abstraction and implementation.
 
 ## Installing
 
@@ -31,7 +31,7 @@ class xxxFilesystem extends Filesystem
 
 ## Thanks
 
-[creocoder/yii2-flysystem](https://github.com/creocoder/yii2-flysystem/tree/master/src)
+[creocoder/yii2-flysystem](https://github.com/creocoder/yii2-flysystem)
 
 ## License
 
