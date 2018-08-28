@@ -9,5 +9,25 @@
             "email": "18219111672@163.com"
         }
     ],
-    "require": {}
+    "suggest": {
+        "league/flysystem-cached-adapter": "An adapter decorator to enable meta-data caching."
+    },
+    "autoload": {
+        "psr-4": {
+            "jimchen\\flysystem\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "flysystem\\tests\\": "tests/"
+        }
+    },
+    "require": {
+        "yiisoft/yii2": "~2.0",
+        "league/flysystem": "~1.0"
+    },
+    "require-dev": {
+        "league/flysystem-cached-adapter": "~1.0",
+        "phpunit/phpunit": "^5.7"
+    }
 }
