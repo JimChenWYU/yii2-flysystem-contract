@@ -14,6 +14,7 @@ use League\Flysystem\AdapterInterface;
 use League\Flysystem\Cached\CachedAdapter;
 use League\Flysystem\Config;
 use League\Flysystem\Filesystem as NativeFilesystem;
+use League\Flysystem\PluginInterface;
 use League\Flysystem\Replicate\ReplicateAdapter;
 use yii\base\Component;
 use yii\base\InvalidConfigException;
@@ -76,6 +77,10 @@ abstract class Filesystem extends Component
      */
     public $cacheDuration = 3600;
     /**
+     * @var PluginInterface[]
+     */
+    public $plugin;
+    /**
      * @var \League\Flysystem\Filesystem
      */
     protected $filesystem;
@@ -109,6 +114,15 @@ abstract class Filesystem extends Component
         }
 
         $this->filesystem = new NativeFilesystem($adapter, $this->config);
+
+        // Add Plugin like listFiles or listPaths
+        if (is_array($this->plugin)) {
+            foreach ($this->plugin as $plugin) {
+                if ($plugin instanceof PluginInterface) {
+                    $this->filesystem->addPlugin($plugin);
+                }
+            }
+        }
     }
 
     /**
