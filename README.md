@@ -18,7 +18,7 @@ class xxxFilesystem extends Filesystem
 {
     /**
      * @return \League\Flysystem\AdapterInterface
-     * /
+     */
     protected function prepareAdapter()
     {
         // TODO: Implement __callStatic() method.
