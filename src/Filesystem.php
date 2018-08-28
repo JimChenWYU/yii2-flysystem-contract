@@ -14,6 +14,7 @@ use League\Flysystem\AdapterInterface;
 use League\Flysystem\Cached\CachedAdapter;
 use League\Flysystem\Config;
 use League\Flysystem\Filesystem as NativeFilesystem;
+use League\Flysystem\Replicate\ReplicateAdapter;
 use yii\base\Component;
 use yii\base\InvalidConfigException;
 use yii\caching\Cache;
@@ -67,6 +68,10 @@ abstract class Filesystem extends Component
      */
     public $cacheKey = 'flysystem';
     /**
+     * @var string|null
+     */
+    public $replica;
+    /**
      * @var int
      */
     public $cacheDuration = 3600;
@@ -90,6 +95,17 @@ abstract class Filesystem extends Component
             }
 
             $adapter = new CachedAdapter($adapter, new YiiCache($cache, $this->cacheKey, $this->cacheDuration));
+        }
+
+        if (null !== $this->replica) {
+            /* @var \League\Flysystem\Filesystem $filesystem */
+            $filesystem = \Yii::$app->get($this->replica);
+
+            if (!$filesystem instanceof Filesystem) {
+                throw new InvalidConfigException('The "replica" property must be an instance of \creocoder\flysystem\Filesystem subclasses.');
+            }
+
+            $adapter = new ReplicateAdapter($adapter, $filesystem->getAdapter());
         }
 
         $this->filesystem = new NativeFilesystem($adapter, $this->config);
